@@ -7,7 +7,7 @@ const timeOfDay = getTimeOfDay();
 let randomNum = getRandomNum();
 const slideNext = document.querySelector('.slide-next');
 const slidePrev = document.querySelector('.slide-prev');
-
+const user = document.querySelector('.name');
 
 //----- Time -----//
 function showTime() {
@@ -58,16 +58,24 @@ function getTimeOfDay() {
 		}
 }
 
+//----- Name -----//
+function setLocalStorage() {
+  localStorage.setItem('name', user.value);
+}
+window.addEventListener('beforeunload', setLocalStorage);
 
-//-----  -----//
-
+function getLocalStorage() {
+  if(localStorage.getItem('name')) {
+    user.value = localStorage.getItem('name');
+  }
+}
+window.addEventListener('load', getLocalStorage);
 
 //----- Background random -----//
 function getRandomNum() {
   return Math.ceil(Math.random() * 20);
-  
 }
-console.log(randomNum);
+
 function setBg() {
   let bgNum = String(randomNum).padStart(2, 0);
   const img = new Image();
@@ -92,3 +100,6 @@ function getSlidePrev() {
   return randomNum;
 }
 slidePrev.addEventListener('click', getSlidePrev);
+
+
+
