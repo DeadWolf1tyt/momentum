@@ -81,7 +81,6 @@ setBg();
 //----- Slider -----//
 function getSlideNext() {
   randomNum = randomNum !== 20 ? randomNum + 1 : 1;
-  let bgNum = String(randomNum).padStart(2, 0);
   setBg();
   return randomNum;
 }
@@ -89,7 +88,6 @@ slideNext.addEventListener('click', getSlideNext);
 
 function getSlidePrev() {
   randomNum = randomNum !== 1 ? randomNum - 1 : 20;
-  let bgNum = String(randomNum).padStart(2, 0);
   setBg();
   return randomNum;
 }
